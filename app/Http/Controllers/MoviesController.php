@@ -34,20 +34,20 @@ class MoviesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MovieRequest $request)
     {
-        $movie = new Movie();
+        // $movie = new Movie();
 
-        $movie->title = $request->input('title');
-        $movie->director = $request->input('director');
-        $movie->imageUrl = $request->input('imageUrl');
-        $movie->duration = $request->input('duration');
-        $movie->releaseDate = $request->input('releaseDate');
-        $movie->genre = $request->input('genre');
+        // $movie->title = $request->input('title');
+        // $movie->director = $request->input('director');
+        // $movie->imageUrl = $request->input('imageUrl');
+        // $movie->duration = $request->input('duration');
+        // $movie->releaseDate = $request->input('releaseDate');
+        // $movie->genre = $request->input('genre');
 
-        $movie->save();
+        // $movie->save();
 
-        return $movie;
+        return $movie = Movie::create($request->all());
     }
 
     /**
@@ -56,9 +56,9 @@ class MoviesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Movie $movie)
     {
-        return Movie::find($id);
+        return $movie;
     }
 
     /**
@@ -79,18 +79,20 @@ class MoviesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MovieRequest $request, Movie $movie)
     {
-        $movie = Movie::find($id);
+        // $movie = Movie::find($id);
 
-        $movie->title = $request->input('title');
-        $movie->director = $request->input('director');
-        $movie->imageUrl = $request->input('imageUrl');
-        $movie->duration = $request->input('duration');
-        $movie->releaseDate = $request->input('releaseDate');
-        $movie->genre = $request->input('genre');
+        // $movie->title = $request->input('title');
+        // $movie->director = $request->input('director');
+        // $movie->imageUrl = $request->input('imageUrl');
+        // $movie->duration = $request->input('duration');
+        // $movie->releaseDate = $request->input('releaseDate');
+        // $movie->genre = $request->input('genre');
 
-        $movie->save();
+        // $movie->save();
+
+        $movie->update($request->all());
 
         return $movie;
     }
@@ -101,9 +103,9 @@ class MoviesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Movie $movie)
     {
-        $movie = Movie::find($id);
+        // $movie = Movie::find($id);
 
         $movie->delete();
 

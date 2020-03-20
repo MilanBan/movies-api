@@ -18,8 +18,10 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::middleware('api')->get('/movies', 'MoviesController@index');
-Route::middleware('api')->get('/movies/{id}', 'MoviesController@show');
-Route::middleware('api')->post('/movies', 'MoviesController@store');
-Route::middleware('api')->put('/movies/{id}', 'MoviesController@update');
-Route::middleware('api')->delete('/movies/{id}', 'MoviesController@destroy');
+Route::resource('movies', 'MoviesController');
+
+// Route::middleware('api')->get('/movies', 'MoviesController@index');
+// Route::middleware('api')->get('/movies/{id}', 'MoviesController@show');
+// Route::middleware('api')->post('/movies', 'MoviesController@store');
+// Route::middleware('api')->put('/movies/{id}', 'MoviesController@update');
+// Route::middleware('api')->delete('/movies/{id}', 'MoviesController@destroy');
