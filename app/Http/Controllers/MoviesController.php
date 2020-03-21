@@ -14,8 +14,14 @@ class MoviesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $titleRequest = $request->input('title'); 
+
+        if($titleRequest){
+            // return Movie::where('title', 'like', '%title%');      // metoda prebacena u model
+            return Movie::search($titleRequest);
+        }
         return Movie::all();
     }
 
