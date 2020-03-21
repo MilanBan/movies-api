@@ -16,13 +16,15 @@ class MoviesController extends Controller
      */
     public function index(Request $request)
     {
-        $titleRequest = $request->input('title'); 
+        $titleRequested = $request->input('title'); 
+        $skipRequested = $request->input('skip', 0);
+        $takeRequested = $request->input('take', Movie::count());
 
-        if($titleRequest){
+        if($titleRequested){
             // return Movie::where('title', 'like', '%title%');      // metoda prebacena u model
-            return Movie::search($titleRequest);
+            return Movie::search($titleRequest, $skipRequested, $takeRequested);
         }
-        return Movie::all();
+        return Movie::skip($skipRequested)->take($takeRequested)->get();
     }
 
     /**
