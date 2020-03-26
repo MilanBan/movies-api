@@ -12,5 +12,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(MoviesTableSeeder::class); // odkomentarises i promenis UsersTableSeeder u svoj ts
+        $this->call(UsersTableSeeder::class); 
     }
 }
